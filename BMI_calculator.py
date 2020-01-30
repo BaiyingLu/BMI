@@ -22,88 +22,102 @@ def unit_select_and_input():
 def verify(weight_unit,weight,height_unit,height):
     if weight_unit == 'kg':
         if height_unit == 'm':
-            BMI_calculate(weight,height)
-        if height_unit == 'meters':
-            BMI_calculate(weight,height)
-        if height_unit == 'inches':
+            result = BMI_calculate(weight,height)
+        elif height_unit == 'meters':
+            result = BMI_calculate(weight,height)
+        elif height_unit == 'inches':
             height = 0.0254*height
-            BMI_calculate(weight,height)
-        if height_unit == 'cm':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'cm':
             height = 0.01*height
-            BMI_calculate(weight,height)
-        if height_unit == 'centimeters':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'centimeters':
             height = 0.01*height
-            BMI_calculate(weight,height)
-        if height_unit == 'feet':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'feet':
             height = 0.3048*height
-            BMI_calculate(weight,height)
+            result =BMI_calculate(weight,height)
         else:
             print("Please input 'm' or 'meters' or 'inches' or 'cm' or 'centimeters' or 'feet' these exact words")
 
-    if weight_unit == 'kilograms':
+    elif weight_unit == 'kilograms':
         if height_unit == 'm':
-            BMI_calculate(weight,height)
-        if height_unit == 'meters':
-            BMI_calculate(weight,height)
-        if height_unit == 'inches':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'meters':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'inches':
             height = 0.0254*height
-            BMI_calculate(weight,height)
-        if height_unit == 'cm':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'cm':
             height = 0.01*height
-            BMI_calculate(weight,height)
-        if height_unit == 'centimeter':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'centimeter':
             height = 0.01*height
-            BMI_calculate(weight,height)
-        if height_unit == 'feet':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'feet':
             height = 0.3048*height
-            BMI_calculate(weight,height)
+            result =BMI_calculate(weight,height)
         else:
             print("Please input 'm' or 'meters' or 'inches' or 'cm' or 'centimeters' or 'feet' these exact words")
 
-    if weight_unit == 'lbs':
+    elif weight_unit == 'lbs':
         weight = 0.45359237*weight
         if height_unit == 'm':
-            BMI_calculate(weight,height)
-        if height_unit == 'meters':
-            BMI_calculate(weight,height)
-        if height_unit == 'inches':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'meters':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'inches':
             height = 0.0254*height
-            BMI_calculate(weight,height)
-        if height_unit == 'cm':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'cm':
             height = 0.01*height
-            BMI_calculate(weight,height)
-        if height_unit == 'centimeter':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'centimeter':
             height = 0.01*height
-            BMI_calculate(weight,height)
-        if height_unit == 'feet':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'feet':
             height = 0.3048*height
-            BMI_calculate(weight,height)
+            result =BMI_calculate(weight,height)
         else:
             print("Please input 'm' or 'meters' or 'inches' or 'cm' or 'centimeters' or 'feet' these exact words")
 
-    if weight_unit == 'pounds':
+    elif weight_unit == 'pounds':
         weight = 0.45359237*weight
         if height_unit == 'm':
-            BMI_calculate(weight,height)
-        if height_unit == 'meters':
-            BMI_calculate(weight,height)
-        if height_unit == 'inches':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'meters':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'inches':
             height = 0.0254*height
-            BMI_calculate(weight,height)
-        if height_unit == 'cm':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'cm':
             height = 0.01*height
-            BMI_calculate(weight,height)
-        if height_unit == 'centimeter':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'centimeter':
             height = 0.01*height
-            BMI_calculate(weight,height)
-        if height_unit == 'feet':
+            result =BMI_calculate(weight,height)
+        elif height_unit == 'feet':
             height = 0.3048*height
-            BMI_calculate(weight,height)
+            result =BMI_calculate(weight,height)
         else:
             print("Please input 'm' or 'meters' or 'inches' or 'cm' or 'centimeters' or 'feet' these exact words")
     else:
         print("Please input 'kg' or 'kilograms' or 'lbs' or 'pounds' these exact words")
+    return result
 
+
+def BMI_calculate(weight,height):
+    weight = float(weight)
+    height = float(height)
+    BMI = weight/(height**2)
+    if BMI<18.5:
+        return "Underweight"
+    elif 18.5<=BMI<25:
+        return "Normal weight"
+    elif 25<=LDL_level<30:
+        return "Overweight"
+    else:
+        return "Obese"
 
 def interface():
     while True:
@@ -116,8 +130,8 @@ def interface():
             return
         elif choice == "1":
             weight_unit,weight,height_unit,height = unit_select_and_input()
-            verify(weight_unit,weight,height_unit,height)
-
+            result = verify(weight_unit,weight,height_unit,height)
+            print(result)
 
 if __name__=="__main__":
     interface()
