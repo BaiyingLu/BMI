@@ -1,4 +1,4 @@
-# To calculate the BMI of a person
+# To calculate the BMI of a person in different unit
 def unit_select_and_input():
     while True:
         print("Please input the calculation unit")
