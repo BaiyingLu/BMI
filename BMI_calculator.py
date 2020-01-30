@@ -11,7 +11,7 @@ def unit_select_and_input():
 
 
         print("Next, please input the height unit")
-        print("Input 'm(meters)' or 'inches' or 'cm'")
+        print("Input 'm(meters)' or 'inches' or 'cm(centimeters)' or 'feet'")
         height_unit = input("Input the height unit:")
         print("The height unit you input is {}".format(height_unit))
         print("Please input the weight")
@@ -19,6 +19,90 @@ def unit_select_and_input():
 
         return weight_unit,weight,height_unit,height
 
+def verify(weight_unit,weight,height_unit,height):
+    if weight_unit == 'kg':
+        if height_unit == 'm':
+            BMI_calculate(weight,height)
+        if height_unit == 'meters':
+            BMI_calculate(weight,height)
+        if height_unit == 'inches':
+            height = 0.0254*height
+            BMI_calculate(weight,height)
+        if height_unit == 'cm':
+            height = 0.01*height
+            BMI_calculate(weight,height)
+        if height_unit == 'centimeters':
+            height = 0.01*height
+            BMI_calculate(weight,height)
+        if height_unit == 'feet':
+            height = 0.3048*height
+            BMI_calculate(weight,height)
+        else:
+            print("Please input 'm' or 'meters' or 'inches' or 'cm' or 'centimeters' or 'feet' these exact words")
+
+    if weight_unit == 'kilograms':
+        if height_unit == 'm':
+            BMI_calculate(weight,height)
+        if height_unit == 'meters':
+            BMI_calculate(weight,height)
+        if height_unit == 'inches':
+            height = 0.0254*height
+            BMI_calculate(weight,height)
+        if height_unit == 'cm':
+            height = 0.01*height
+            BMI_calculate(weight,height)
+        if height_unit == 'centimeter':
+            height = 0.01*height
+            BMI_calculate(weight,height)
+        if height_unit == 'feet':
+            height = 0.3048*height
+            BMI_calculate(weight,height)
+        else:
+            print("Please input 'm' or 'meters' or 'inches' or 'cm' or 'centimeters' or 'feet' these exact words")
+
+    if weight_unit == 'lbs':
+        weight = 0.45359237*weight
+        if height_unit == 'm':
+            BMI_calculate(weight,height)
+        if height_unit == 'meters':
+            BMI_calculate(weight,height)
+        if height_unit == 'inches':
+            height = 0.0254*height
+            BMI_calculate(weight,height)
+        if height_unit == 'cm':
+            height = 0.01*height
+            BMI_calculate(weight,height)
+        if height_unit == 'centimeter':
+            height = 0.01*height
+            BMI_calculate(weight,height)
+        if height_unit == 'feet':
+            height = 0.3048*height
+            BMI_calculate(weight,height)
+        else:
+            print("Please input 'm' or 'meters' or 'inches' or 'cm' or 'centimeters' or 'feet' these exact words")
+
+    if weight_unit == 'pounds':
+        weight = 0.45359237*weight
+        if height_unit == 'm':
+            BMI_calculate(weight,height)
+        if height_unit == 'meters':
+            BMI_calculate(weight,height)
+        if height_unit == 'inches':
+            height = 0.0254*height
+            BMI_calculate(weight,height)
+        if height_unit == 'cm':
+            height = 0.01*height
+            BMI_calculate(weight,height)
+        if height_unit == 'centimeter':
+            height = 0.01*height
+            BMI_calculate(weight,height)
+        if height_unit == 'feet':
+            height = 0.3048*height
+            BMI_calculate(weight,height)
+        else:
+            print("Please input 'm' or 'meters' or 'inches' or 'cm' or 'centimeters' or 'feet' these exact words")
+    else:
+        print("Please input 'kg' or 'kilograms' or 'lbs' or 'pounds' these exact words")
 
 
 def interface():
@@ -32,7 +116,7 @@ def interface():
             return
         elif choice == "1":
             weight_unit,weight,height_unit,height = unit_select_and_input()
-            print(weight_unit,weight,height_unit,height)
+            verify(weight_unit,weight,height_unit,height)
 
 
 if __name__=="__main__":
