@@ -14,7 +14,7 @@ def unit_select_and_input():
         print("Input 'm(meters)' or 'inches' or 'cm(centimeters)' or 'feet'")
         height_unit = input("Input the height unit:")
         print("The height unit you input is {}".format(height_unit))
-        print("Please input the weight")
+        print("Please input the height")
         height = input("Input the height:")
 
         return weight_unit,weight,height_unit,height
@@ -22,88 +22,110 @@ def unit_select_and_input():
 def verify(weight_unit,weight,height_unit,height):
     if weight_unit == 'kg':
         if height_unit == 'm':
-            result = BMI_calculate(weight,height)
+            result,BMI_value = BMI_calculate(weight,height)
         elif height_unit == 'meters':
-            result = BMI_calculate(weight,height)
+            result,BMI_value = BMI_calculate(weight,height)
         elif height_unit == 'inches':
+            height = float(height)
             height = 0.0254*height
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'cm':
+            height = float(height)
             height = 0.01*height
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'centimeters':
+            height = float(height)
             height = 0.01*height
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'feet':
+            height = float(height)
             height = 0.3048*height
-            result =BMI_calculate(weight,height)
+            result ,BMI_value=BMI_calculate(weight,height)
         else:
             print("Please input 'm' or 'meters' or 'inches' or 'cm' or 'centimeters' or 'feet' these exact words")
 
     elif weight_unit == 'kilograms':
         if height_unit == 'm':
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'meters':
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'inches':
+            height = float(height)
             height = 0.0254*height
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'cm':
+            height = float(height)
             height = 0.01*height
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'centimeter':
+            height = float(height)
             height = 0.01*height
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'feet':
+            height = float(height)
             height = 0.3048*height
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         else:
             print("Please input 'm' or 'meters' or 'inches' or 'cm' or 'centimeters' or 'feet' these exact words")
 
     elif weight_unit == 'lbs':
+        weight = float(weight)
         weight = 0.45359237*weight
         if height_unit == 'm':
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'meters':
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'inches':
+            height = float(height)
             height = 0.0254*height
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'cm':
+            height = float(height)
             height = 0.01*height
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'centimeter':
+            height = float(height)
             height = 0.01*height
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'feet':
+            height = float(height)
             height = 0.3048*height
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         else:
             print("Please input 'm' or 'meters' or 'inches' or 'cm' or 'centimeters' or 'feet' these exact words")
 
     elif weight_unit == 'pounds':
+        weight = float(weight)
         weight = 0.45359237*weight
         if height_unit == 'm':
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'meters':
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'inches':
+            height = float(height)
             height = 0.0254*height
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'cm':
+            height = float(height)
             height = 0.01*height
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'centimeter':
+            height = float(height)
             height = 0.01*height
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         elif height_unit == 'feet':
+            height = float(height)
             height = 0.3048*height
-            result =BMI_calculate(weight,height)
+            result,BMI_value =BMI_calculate(weight,height)
         else:
             print("Please input 'm' or 'meters' or 'inches' or 'cm' or 'centimeters' or 'feet' these exact words")
+            result = -1
+            BMI_value = -1
     else:
         print("Please input 'kg' or 'kilograms' or 'lbs' or 'pounds' these exact words")
-    return result
+        result = -1
+        BMI_value = -1
+    return result,BMI_value
 
 
 def BMI_calculate(weight,height):
@@ -111,13 +133,21 @@ def BMI_calculate(weight,height):
     height = float(height)
     BMI = weight/(height**2)
     if BMI<18.5:
-        return "Underweight"
+        return "Underweight",BMI
     elif 18.5<=BMI<25:
-        return "Normal weight"
-    elif 25<=LDL_level<30:
-        return "Overweight"
+        return "Normal weight",BMI
+    elif 25<=BMI<30:
+        return "Overweight",BMI
     else:
-        return "Obese"
+        return "Obese",BMI
+
+def print_the_result(result,BMI_value):
+    if result == -1:
+        print("Please input the unit again")
+    else:
+        print("The BMI of this person is {}".format(round(BMI_value,3)))
+        print("The health level of this person is {}".format(result))
+
 
 def interface():
     while True:
@@ -130,8 +160,8 @@ def interface():
             return
         elif choice == "1":
             weight_unit,weight,height_unit,height = unit_select_and_input()
-            result = verify(weight_unit,weight,height_unit,height)
-            print(result)
+            result,BMI_value = verify(weight_unit,weight,height_unit,height)
+            print_the_result(result,BMI_value)
 
 if __name__=="__main__":
     interface()
